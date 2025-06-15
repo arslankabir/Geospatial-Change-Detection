@@ -13,6 +13,34 @@ This project implements change detection in Abu Dhabi using Sentinel-2 imagery t
 - **Area Statistics**: Calculate area of significant changes
 - **Visualization**: Generate side-by-side comparisons with colorbars and legends
 
+## Preprocessing Pipeline
+1. **Data Collection**
+   - Cloud cover filtering (10% threshold)
+   - Band selection (Blue, Green, Red, NIR, SWIR)
+   - Date range filtering
+   - Region of interest (ROI) filtering
+
+2. **Image Processing**
+   - Resolution standardization (10m)
+   - Image normalization
+   - Metadata preservation
+   - GeoTIFF format conversion
+
+3. **Feature Extraction**
+   - NDVI: Vegetation analysis
+   - NDWI: Water body detection
+   - NDBI: Built-up area analysis
+   - SAVI: Soil-adjusted vegetation index
+   - MSAVI: Modified soil-adjusted vegetation index
+   - EVI: Enhanced vegetation index
+   - BSI: Bare soil index
+
+4. **Data Preparation**
+   - Background pixel removal
+   - Data normalization
+   - Resampling to match Sentinel-2 resolution
+   - Machine learning ready format conversion
+
 ## Project Structure
 ```
 ├── data/                      # Data directory
@@ -23,7 +51,10 @@ This project implements change detection in Abu Dhabi using Sentinel-2 imagery t
 │   └── ndbi_changes.png       # NDBI change visualization
 ├── src/                       # Source code
 │   ├── download_sentinel.py   # Google Earth Engine data download
-│   └── change_detection.py    # Change detection implementation
+│   ├── preprocessing.py       # Image preprocessing pipeline
+│   ├── feature_extraction.py  # Spectral indices calculation
+│   ├── change_detection.py    # Change detection implementation
+│   └── simple_classification.py # Classification utilities
 ├── requirements.txt           # Project dependencies
 └── README.md                 # Project documentation
 ```
@@ -122,4 +153,5 @@ python src/change_detection.py
 Feel free to submit issues and enhancement requests!
 
 ## License
-[Your chosen license] 
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
