@@ -13,6 +13,38 @@ This project implements change detection in Abu Dhabi using Sentinel-2 imagery t
 - **Area Statistics**: Calculate area of significant changes
 - **Visualization**: Generate side-by-side comparisons with colorbars and legends
 
+## Data Download Process
+
+### 2018 Data Collection
+1. **Setup Parameters**
+   - Date Range: January 1, 2018 - December 31, 2018
+   - Cloud Cover: Maximum 10%
+   - Region: Abu Dhabi (ROI coordinates: 54.0°E to 55.0°E, 24.0°N to 25.0°N)
+   - Bands: B2 (Blue), B3 (Green), B4 (Red), B8 (NIR), B11 (SWIR)
+
+2. **Download Command**
+```bash
+python src/download_sentinel.py --start_date 2018-01-01 --end_date 2018-12-31 --output data/sentinel_2018.tif
+```
+
+### 2023 Data Collection
+1. **Setup Parameters**
+   - Date Range: January 1, 2023 - December 31, 2023
+   - Cloud Cover: Maximum 10%
+   - Region: Same as 2018
+   - Bands: Same as 2018
+
+2. **Download Command**
+```bash
+python src/download_sentinel.py --start_date 2023-01-01 --end_date 2023-12-31 --output data/sentinel_2023.tif
+```
+
+### Data Quality Checks
+- Cloud coverage verification
+- Band availability confirmation
+- Spatial resolution validation (10m)
+- Temporal consistency check
+
 ## Preprocessing Pipeline
 1. **Data Collection**
    - Cloud cover filtering (10% threshold)
